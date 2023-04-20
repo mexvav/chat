@@ -1,0 +1,28 @@
+@startuml
+class User {
+  +name: string
+}
+
+class Group {
+  +name: string
+  +users: Set<User>
+}
+
+class GroupMessage {
+	+group: Group
+	+sender: User
+	+timestamp: int
+	+text: string
+}
+
+class PrivateMessage {
+	+sender: User
+	+receiver: User
+	+timestamp: int
+	+text: string
+}
+
+User "1" --o "M" Group
+User "1" -- "M" PrivateMessage
+Group "1" -- "M" GroupMessage
+@enduml
